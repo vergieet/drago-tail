@@ -1,0 +1,17 @@
+{
+  "name" : "DraGo Sample",
+  "description" : "Sample for DraGo framework",
+  "env" : "dev",
+  "dir":{
+    "assets" : "assets/",
+    "js" : "assets/js/",
+    "css" : "assets/css/",
+    "build" : "build/",
+    "config-js" : "config/js/",
+    "config-css" : "config/css/",
+    "config-page" : "config/pages/"
+  },
+  "file":{
+    "route" : "config/route.json"
+  }
+}

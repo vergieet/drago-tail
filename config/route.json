@@ -1,0 +1,10 @@
+{
+  "/":{
+    "GET":"GetUsername",
+    "POST":"main@welcome"
+  },
+  "/home":{
+    "GET":"main@welcome",
+    "POST":"main@welcome"
+  }
+}
