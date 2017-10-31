@@ -5,16 +5,25 @@ import (
 	"myfw/controller"
 )
 func main() {
-	Routes{"/halo",controller.UserController{}.GetUsername()}.POST();
+	Routes{"/halo",controller.GetAllUser}.GET();
+}
+func Mains() {
+	Routes{"/halo",controller.GetAllUser}.GET();
 }
 
 type Routes struct {
 	url string
-	data string
+	run
 }
+
+type run func() string;
 
 func (r *Routes) POST() {
 	fmt.Println("Hi, my name is")
+}
+func (r *Routes) GET() {
+	r.run()
+	fmt.Println("GET")
 }
 
 func Reverse(s string) string {
