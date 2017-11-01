@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"myfw/config"
 	//"encoding/json"
+	"myfw/model"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -16,7 +17,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	var ra string
 	ra = config.GetRoute(r.URL.RequestURI());
 	w.Header().Set("Content-Type", "application/json")
-	fmt.Fprintf(w,"%s",ra)
+	var sa model.User
+	sa.Name = "ha"
+	sa.Email = "hi"
+	fmt.Fprintf(w,"%s %s",ra,sa.All())
 	//fmt.Fprintf(w, "Hi the %s %T!", data,data)
 }
 func main() {

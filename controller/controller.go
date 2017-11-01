@@ -1,6 +1,15 @@
 package controller
 
-import "fmt"
+import (
+	"fmt"
+	//"github.com/vergieet/drago-lib/response"
+	//"myfw/model"
+	//"myfw/static/user"
+	//"encoding/json"
+	//"myfw/model"
+	//"github.com/vergieet/drago-lib/response"
+	"github.com/vergieet/drago-lib/response"
+)
 
 type User interface {
 	GetAllUser() string
@@ -14,10 +23,17 @@ func GetFunc() func(){
 		fmt.Print("ha");
 	}
 }
+func getUser(u *User){
+
+}
 
 func  GetAllUser() string {
-	return "[{\"username\":\"HALLLOO\"},{\"username\":\"HAhai\"}]"
-}
+	//var Users []model.User
+	//Users = append(Users,user.Find(1))
+	//urlsJson, _ := json.Marshal(Users)
+	//return response.Success(string(urlsJson))
+	return response.Success("{}")
+	}
 
 func (t Userx) get() string {
 	return t.name

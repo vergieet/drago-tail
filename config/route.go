@@ -1,30 +1,41 @@
 package config
 
 import (
-	"fmt"
+	"github.com/vergieet/drago-lib/response"
 	"myfw/controller"
 )
 
 const POST  = "post"
 const GET  = "get"
-var r []Routes
-var rm map[string]Routes
-func main() {
-	//Routes{"/halo",controller.GetAllUser};
-}
+
+var r map[string]Routes
+
 func Mains() {
-	rm = make(map[string]Routes)
-	add(Routes{GET,"/halo/",controller.GetAllUser})
+	r= make(map[string]Routes)
 	add(Routes{GET,"/halo",controller.GetAllUser})
 }
 func GetRoute(url string) string {
 	Mains()
-	return rm[url].run()
+	if val, ok := r[url]; ok {
+		return val.run()
+	}else{
+		last  := url[len(url)-1:]
+		if(last == "/"){
+			url = url[0:len(url)-1]
+		}else {
+			url = url + "/"
+		}
+		if val, ok := r[url]; ok {
+			return val.run()
+		}else {
+			return response.Fail("404 Not Found")
+		}
+	}
+
 }
 
 func add(routes Routes)  {
-	rm[routes.url] = routes
-	r = append(r,routes)
+	r[routes.url] = routes
 }
 
 type Routes struct {
@@ -35,18 +46,3 @@ type Routes struct {
 
 type run func() string;
 
-func (r *Routes) POST() {
-	fmt.Println("Hi, my name is")
-}
-func (r *Routes) GET() {
-	fmt.Print(r.run())
-	fmt.Println("GET")
-}
-
-func Reverse(s string) string {
-	r := []rune(s)
-	for i, j := 0, len(r)-1; i < len(r)/2; i, j = i+1, j-1 {
-		r[i], r[j] = r[j], r[i]
-	}
-	return string(r)
-}
