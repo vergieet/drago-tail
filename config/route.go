@@ -4,14 +4,31 @@ import (
 	"fmt"
 	"myfw/controller"
 )
+
+const POST  = "post"
+const GET  = "get"
+var r []Routes
+var rm map[string]Routes
 func main() {
-	Routes{"/halo",controller.GetAllUser}.GET();
+	//Routes{"/halo",controller.GetAllUser};
 }
 func Mains() {
-	Routes{"/halo",controller.GetAllUser}.GET();
+	rm = make(map[string]Routes)
+	add(Routes{GET,"/halo/",controller.GetAllUser})
+	add(Routes{GET,"/halo",controller.GetAllUser})
+}
+func GetRoute(url string) string {
+	Mains()
+	return rm[url].run()
+}
+
+func add(routes Routes)  {
+	rm[routes.url] = routes
+	r = append(r,routes)
 }
 
 type Routes struct {
+	method string
 	url string
 	run
 }
@@ -22,7 +39,7 @@ func (r *Routes) POST() {
 	fmt.Println("Hi, my name is")
 }
 func (r *Routes) GET() {
-	r.run()
+	fmt.Print(r.run())
 	fmt.Println("GET")
 }
 

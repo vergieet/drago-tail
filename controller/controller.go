@@ -2,7 +2,11 @@ package controller
 
 import "fmt"
 
-func main() {
+type User interface {
+	GetAllUser() string
+}
+type Userx struct {
+	name string
 }
 
 func GetFunc() func(){
@@ -11,6 +15,10 @@ func GetFunc() func(){
 	}
 }
 
-func GetAllUser() string {
-	return "a"
+func  GetAllUser() string {
+	return "[{\"username\":\"HALLLOO\"},{\"username\":\"HAhai\"}]"
+}
+
+func (t Userx) get() string {
+	return t.name
 }
