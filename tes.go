@@ -5,9 +5,8 @@ import (
 	//"io/ioutil"
 	//"encoding/json"
 	"net/http"
-	"myfw/config"
-	//"encoding/json"
-	"myfw/model"
+	"github.com/vergieet/drago-tail/config"
+
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -17,10 +16,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	var ra string
 	ra = config.GetRoute(r.URL.RequestURI());
 	w.Header().Set("Content-Type", "application/json")
-	var sa model.User
-	sa.Name = "ha"
-	sa.Email = "hi"
-	fmt.Fprintf(w,"%s %s",ra,sa.All())
+	fmt.Fprintf(w,"%s",ra)
 	//fmt.Fprintf(w, "Hi the %s %T!", data,data)
 }
 func main() {

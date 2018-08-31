@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/vergieet/drago-lib/response"
-	"myfw/controller"
+	"github.com/vergieet/drago-tail/controller"
 )
 
 const POST  = "post"

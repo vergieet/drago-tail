@@ -2,18 +2,13 @@ package controller
 
 import (
 	"fmt"
-	//"github.com/vergieet/drago-lib/response"
-	//"myfw/model"
-	//"myfw/static/user"
-	//"encoding/json"
-	//"myfw/model"
-	//"github.com/vergieet/drago-lib/response"
 	"github.com/vergieet/drago-lib/response"
 )
 
 type User interface {
 	GetAllUser() string
 }
+
 type Userx struct {
 	name string
 }
