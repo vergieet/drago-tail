@@ -18,7 +18,7 @@ func GetFunc() func(){
 		fmt.Print("ha");
 	}
 }
-func getUser(u *User){
+func (u Userx)getUser(){
 
 }
 
@@ -32,4 +32,9 @@ func  GetAllUser() string {
 
 func (t Userx) get() string {
 	return t.name
+}
+func main(){
+	var user Userx;
+	user.getUser();
+
 }

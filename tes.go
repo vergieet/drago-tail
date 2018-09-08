@@ -5,7 +5,7 @@ import (
 	//"io/ioutil"
 	//"encoding/json"
 	"net/http"
-	"github.com/vergieet/drago-tail/config"
+	"github.com/vergieet/drago-tail/core"
 
 )
 
@@ -14,7 +14,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	//plan, _ := ioutil.ReadFile(	"./config/route.json")
 	//json.Unmarshal(plan, &data)
 	var ra string
-	ra = config.GetRoute(r.URL.RequestURI());
+	ra = core.GetRoute(r.URL.RequestURI());
 	w.Header().Set("Content-Type", "application/json")
 	fmt.Fprintf(w,"%s",ra)
 	//fmt.Fprintf(w, "Hi the %s %T!", data,data)
