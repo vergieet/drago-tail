@@ -2,7 +2,6 @@ package core
 
 import (
 	"github.com/vergieet/drago-lib/response"
-	"github.com/vergieet/drago-tail/controller"
 )
 
 const (
@@ -12,14 +11,8 @@ const (
 
 var r map[string]Routes
 
-func Mains() {
-	r= make(map[string]Routes)
-	add(Routes{GET,"/halo",controller.GetAllUser})
-	var userController controller.UserController = controller.UserController{};
-	add(Routes{GET,"/yes",userController.GetAllUser})
-}
 func GetRoute(url string) string {
-	Mains()
+
 	if val, ok := r[url]; ok {
 		return val.run()
 	}else{
@@ -35,19 +28,11 @@ func GetRoute(url string) string {
 			return response.Fail("404 Not Found")
 		}
 	}
-
 }
 
-
-func add(routes Routes)  {
-	r[routes.url] = routes
-}
-
-type Routes struct {
-	method string
-	url string
-	run
-}
 
 type run func() string;
 
+func (r *Routes) Get(){
+
+}
